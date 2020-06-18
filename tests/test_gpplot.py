@@ -63,3 +63,9 @@ def test_barplot():
 def test_desnity_rugplot():
     data = sns.load_dataset('iris')
     fig, ax = gpplot.density_rugplot(data, 'petal_length', 'species', ['setosa', 'virginica'])
+
+def test_label_poinst():
+    mpg = sns.load_dataset('mpg')
+    ax = sns.scatterplot(data=mpg, x='weight', y='mpg')
+    label = ['hi 1200d', 'ford f250', 'chevy c20', 'oldsmobile omega']
+    gpplot.label_points(ax, mpg, 'weight', 'mpg', label, 'name')

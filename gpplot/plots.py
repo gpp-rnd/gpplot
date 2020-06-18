@@ -346,7 +346,6 @@ def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='
     **kwargs
         Other keyword arguments are passed through to matplotlib.plt.text
 
-
     Returns
     -------
     matplotlib.axes.Axes
@@ -358,4 +357,50 @@ def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='
     # ensures text labels are non-overlapping
     adjust_text(texts, arrowprops=dict(arrowstyle=arrowstyle, color=arrow_color,
                                        lw=arrow_lw))
+    return ax
+
+
+def dark_boxplot(data, x, y, boxprops=None, medianprops=None,
+                 whiskerprops=None, capprops=None, flierprops=None, **kwargs):
+    """Wrapper for seaborn.boxplot, which defaults to black lines for boxplot elements
+
+    Parameters
+    ----------
+    data: DataFrame
+        Data to create labels
+    x: str
+        x position of labels
+    y: str
+        y position of labels
+    boxprops: dict, optional
+        Style of box, passed to matplotlib.pyplot.boxplot
+    medianprops: dict, optional
+        Style of median line, passed to matplotlib.pyplot.boxplot
+    whiskerprops: dict, optional
+        Style of whiskers, passed to matplotlib.pyplot.boxplot
+    capprops: dict, optional
+        Sytle of cap on top of whiskers, passed to matplotlib.pyplot.boxplot
+    flierprops: dict, optional
+         Style of outlier points, passed to matplotlib.pyplot.boxplot
+    **kwargs
+        Other keyword arguments are passed through to seaborn.boxplot
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if boxprops is None:
+        boxprops = {'edgecolor': 'black'}
+    if medianprops is None:
+        medianprops = {'color': 'black'}
+    if whiskerprops is None:
+        whiskerprops = {'color': 'black'}
+    if capprops is None:
+        capprops = {'color': 'black'}
+    if flierprops is None:
+        flierprops = {'marker': 'o', 'markerfacecolor': 'black'}
+    ax = sns.boxplot(data=data, x=x, y=y,
+                     boxprops=boxprops, medianprops=medianprops,
+                     whiskerprops=whiskerprops, capprops=capprops,
+                     flierprops=flierprops, **kwargs)
     return ax

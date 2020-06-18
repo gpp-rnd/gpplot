@@ -5,15 +5,15 @@ Credits
 Development Lead
 ----------------
 
-* Peter C. DeWeirdt <petedeweirdt@gmail.com>
+* Peter C DeWeirdt <petedeweirdt@gmail.com>
 
 Contributors
 ------------
 
-* Ruth E. Hanna
+* Ruth E Hanna
 * Mudra Hegde
 * Zsofia Szegletes
-* Annabel Sangree
+* Annabel K Sangree
 * Marissa N Feeley
 * Audrey L Griffith
 

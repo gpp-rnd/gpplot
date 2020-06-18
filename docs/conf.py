@@ -47,8 +47,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'gpplot'
-copyright = "2020, Peter Carl DeWeirdt"
-author = "Peter Carl DeWeirdt"
+copyright = "2020, Members of the Genetic Perturbation Platform R&D group at the Broad Institute"
+author = "GPP R&D"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -129,7 +129,7 @@ latex_elements = {
 latex_documents = [
     (master_doc, 'gpplot.tex',
      'gpplot Documentation',
-     'Peter Carl DeWeirdt', 'manual'),
+     'GPP R&D', 'manual'),
 ]
 
 

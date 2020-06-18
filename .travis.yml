@@ -25,5 +25,5 @@ deploy:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    repo: PeterDeWeirdt/gpplot
+    repo: gpp-rnd/gpplot
     python: 3.8

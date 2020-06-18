@@ -6,8 +6,8 @@ gpplot
 .. image:: https://img.shields.io/pypi/v/gpplot.svg
         :target: https://pypi.python.org/pypi/gpplot
 
-.. image:: https://img.shields.io/travis/PeterDeWeirdt/gpplot.svg
-        :target: https://travis-ci.com/PeterDeWeirdt/gpplot
+.. image:: https://img.shields.io/travis/gpp-rnd/gpplot.svg
+        :target: https://travis-ci.com/gpp-rnd/gpplot
 
 .. image:: https://readthedocs.org/projects/gpplot/badge/?version=latest
         :target: https://gpplot.readthedocs.io/en/latest/?badge=latest

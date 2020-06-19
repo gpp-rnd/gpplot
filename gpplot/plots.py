@@ -1,4 +1,4 @@
-"""plots module. Contains functions to generate plots"""
+"""Plots module - contains functions to generate plots."""
 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -9,28 +9,27 @@ from matplotlib.offsetbox import AnchoredText
 from matplotlib import ticker
 from adjustText import adjust_text
 
-def label(x, color, label, text_xpos, text_ypos, text_ha, text_va):
-    # For use with ridgeplot
-    # Define and use a simple function to label the kde plots in axes coordinates
+def label_axes(x, color, label, text_xpos, text_ypos, text_ha, text_va):
+    """For use with ridgeplot, define and use a simple function
+    to label the kde plots in axes coordinates"""
     ax = plt.gca()
     ax.text(text_xpos, text_ypos, label, color=color,
             ha=text_ha, va=text_va, transform=ax.transAxes)
 
 
-def ridgeplot(df, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=0.2, text_ha='left',
+def ridgeplot(data, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=0.2, text_ha='left',
               text_va='center', lw=0.5, **kwargs):
     """
     Creates a ridgeplot of overlapping kde plots
 
     Parameters
     ----------
-    df : DataFrame
+    data : DataFrame
+        Dataframe with columns x and hue
     x : str
-        Variables that define subsets of the data to plot on the FacetGrid. x defines the variable that
-        will be plotted on the x-axis.
+        Defines the variable that will be plotted on the x-axis
     hue : str
-        Variables that define subsets of the data to plot on the FacetGrid. hue defines the variable that
-        will be plotted on the rows.
+        Hue defines the variable that will be plotted for the rows
     aspect : int, optional
         Defines aspect ratio of FacetGrid
     height : float, optional
@@ -48,7 +47,7 @@ def ridgeplot(df, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=
     lw : float, optional
         Specifies the linewidth for kdeplot
     **kwargs
-        Other keyword arguments are passed through to the FacetGrid
+        Other keyword arguments are passed through to sns.FacetGrid
 
     Returns
     -------
@@ -61,17 +60,17 @@ def ridgeplot(df, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=
 
     Examples
     --------
-    >> iris = sns.load_dataset('iris')
-    >> g = gpplot.ridgeplot(iris, 'sepal_width', 'species')
+    >>> iris = sns.load_dataset('iris')
+    >>> g = gpplot.ridgeplot(iris, 'sepal_width', 'species')
     """
     # Change background to be transparent and set style to white
     sns.set(style="white", rc={"axes.facecolor": (0, 0, 0, 0)})
     # Initialize a facetgrid
-    g = sns.FacetGrid(df, row=hue, hue=hue, aspect=aspect, height=height, **kwargs)
+    g = sns.FacetGrid(data, row=hue, hue=hue, aspect=aspect, height=height, **kwargs)
     # Draw the densities in a few steps
     g.map(sns.kdeplot, x, clip_on=False, shade=True, alpha=alpha, lw=lw)
     # Label axes with the values from hue
-    g.map(label, x, text_xpos=text_xpos, text_ypos=text_ypos, text_ha=text_ha, text_va=text_va)
+    g.map(label_axes, x, text_xpos=text_xpos, text_ypos=text_ypos, text_ha=text_ha, text_va=text_va)
     # Set the subplots to overlap
     g.fig.subplots_adjust(hspace=-0.25)
     # Remove axes details that don't play well with overlap
@@ -86,7 +85,7 @@ def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor='',
                       palette='viridis', legend=False, **kwargs):
     """Scatter plot with points colored by density
 
-    Rasterized scatterplot for easy illustrator import
+    Rasterized for easy illustrator import
 
     Parameters
     ----------
@@ -174,7 +173,7 @@ def add_correlation(ax, data, x, y, method='pearson', signif=2, loc='upper left'
     ax: Axis object
         Plot to add correlation to
     data: DataFrame
-        DataFrame with columns x and y
+        DataFrame with columns x and y, same data used to create the plot
     x: str
         x variable to correlate
     y: str
@@ -184,13 +183,13 @@ def add_correlation(ax, data, x, y, method='pearson', signif=2, loc='upper left'
     signif: int, optional
         number of significant figures
     loc: string, optional
-        location of label
+        location of label, passed to matplotlib.offsetbox.AnchoredText
     size: int, optional
         text size
     fontfamily: str, optional
         text font family
     **kwargs
-        Additional arguments passed to text object
+        Other key word arguments passed to text object
 
     Returns
     -------
@@ -209,7 +208,7 @@ def pandas_barplot(data, x, hue, y, x_order=None, hue_order=None,
                    horizontal=True, stacked=True, **kwargs):
     """Create a barplot using pandas plot functionality
 
-    Mainly allows for stacked barplots, wich is a limitation of seaborn
+    Mainly allows for stacked barplots
 
     Parameters
     ----------
@@ -338,11 +337,11 @@ def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='
     label_col: str
         Column to match 'label' points
     arrowstyle: str, optional
-        Style of arrowhead
+        Style of arrow
     arrow_color: str, optional
-        Color of arrowhead
+        Color of arrow
     arrow_lw: float, optional
-        Line weight of arrowhead
+        Line weight of arrow
     **kwargs
         Other keyword arguments are passed through to matplotlib.plt.text
 
@@ -367,11 +366,11 @@ def dark_boxplot(data, x, y, boxprops=None, medianprops=None,
     Parameters
     ----------
     data: DataFrame
-        Data to create labels
+        Data to create boxplot
     x: str
-        x position of labels
+        x value of boxplot
     y: str
-        y position of labels
+        y value of boxplot
     boxprops: dict, optional
         Style of box, passed to matplotlib.pyplot.boxplot
     medianprops: dict, optional

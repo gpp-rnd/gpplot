@@ -1,4 +1,4 @@
-"""Top-level package for gpplot."""
+"""import gpplot imports both the plots and style modules"""
 from .plots import *
 from .style import *
 

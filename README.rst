@@ -56,7 +56,7 @@ Create a point density plot and add a pearson correlation::
     ax = gpplot.point_densityplot(scatter_data, 'x', 'y', palette=gpplot.sequential_cmap())
     ax = gpplot.add_correlation(ax, scatter_data, 'x', 'y')
 
-.. image:: ../figures/pointdensity_example.png
+.. image:: figures/pointdensity_example.png
     :width: 300px
     :height: 300px
     :align: center
@@ -70,7 +70,7 @@ Label points in a scatterplot::
     gpplot.label_points(ax, mpg, 'weight', 'mpg', label, 'name',
                         size = 12, style = 'italic')
 
-.. image:: ../figures/label_example.png
+.. image:: figures/label_example.png
     :width: 300px
     :height: 300px
     :align: center

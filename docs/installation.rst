@@ -32,13 +32,13 @@ You can either clone the public repository:
 
 .. code-block:: console
 
-    $ git clone git://github.com/PeterDeWeirdt/gpplot
+    $ git clone git://github.com/gpp-rnd/gpplot
 
 Or download the `tarball`_:
 
 .. code-block:: console
 
-    $ curl -OJL https://github.com/PeterDeWeirdt/gpplot/tarball/master
+    $ curl -OJL https://github.com/gpp-rnd/gpplot/tarball/master
 
 Once you have a copy of the source, you can install it with:
 
@@ -47,5 +47,5 @@ Once you have a copy of the source, you can install it with:
     $ python setup.py install
 
 
-.. _Github repo: https://github.com/PeterDeWeirdt/gpplot
-.. _tarball: https://github.com/PeterDeWeirdt/gpplot/tarball/master
+.. _Github repo: https://github.com/gpp-rnd/gpplot
+.. _tarball: https://github.com/gpp-rnd/gpplot/tarball/master

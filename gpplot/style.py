@@ -3,6 +3,7 @@
 import seaborn as sns
 import matplotlib as mpl
 
+
 def discrete_palette(palette='Set2', n=8):
     """Default discrete palette"""
     return sns.color_palette(palette, n)

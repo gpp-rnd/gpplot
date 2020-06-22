@@ -7,7 +7,7 @@ History
 
 * Project start.
 
-0.1.1 (2020-06-2)
+0.3.0 (2020-06-2)
 ------------------
 
 * First release on pypi

@@ -9,6 +9,7 @@ from matplotlib.offsetbox import AnchoredText
 from matplotlib import ticker
 from adjustText import adjust_text
 
+
 def label_axes(x, color, label, text_xpos, text_ypos, text_ha, text_va):
     """For use with ridgeplot, define and use a simple function
     to label the kde plots in axes coordinates"""
@@ -248,8 +249,8 @@ def pandas_barplot(data, x, hue, y, x_order=None, hue_order=None,
 
 
 def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
-                     density_color='black', rug_color='black', rug_alpha=0.5,
-                     figsize=plt.rcParams['figure.figsize'], ref_line=None,
+                    density_color='black', rug_color='black', rug_alpha=0.5,
+                    figsize=plt.rcParams['figure.figsize'], ref_line=None,
                     ref_line_color='black', **kwargs):
     """Creates a density rugplot
 

@@ -6,7 +6,7 @@ gpplot
 .. image:: https://img.shields.io/pypi/v/gpplot.svg
         :target: https://pypi.python.org/pypi/gpplot
 
-.. image:: https://img.shields.io/travis/gpp-rnd/gpplot.svg
+.. image:: https://travis-ci.com/gpp-rnd/gpplot.svg?branch=master
         :target: https://travis-ci.com/gpp-rnd/gpplot
 
 .. image:: https://readthedocs.org/projects/gpplot/badge/?version=latest

@@ -23,6 +23,7 @@ def scatter_data():
 def test_ridgeplot():
     iris = sns.load_dataset('iris')
     g = gpplot.ridgeplot(iris, 'sepal_width', 'species')
+    assert g.row_names == ['setosa', 'versicolor', 'virginica']
 
 
 def test_point_density_plot(scatter_data):

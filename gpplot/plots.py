@@ -314,7 +314,7 @@ def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
         ax[i + 1].set_yticks([])
         ax[i + 1].get_xaxis().set_major_locator(ticker.AutoLocator())
         if ref_line is not None:
-            ax[i+1].axvline(x=ref_line, color=ref_line_color, linestyle='--')
+            ax[i + 1].axvline(x=ref_line, color=ref_line_color, linestyle='--')
     plt.xlabel(x)
     return fig, ax
 

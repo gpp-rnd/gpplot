@@ -26,3 +26,7 @@ History
 0.3.2 (2020-07-12)
 ------------------
 * Added minimum version for requirements
+
+0.3.3 (2020-07-12)
+------------------
+* Added version for dev requirements

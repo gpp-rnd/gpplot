@@ -22,3 +22,7 @@ History
 
 * Add plt.gca to add_correlation and label_points
 * Update docs to include notebook references
+
+0.3.2 (2020-07-12)
+------------------
+* Added minimum version for requirements

@@ -30,3 +30,7 @@ History
 0.3.3 (2020-07-12)
 ------------------
 * Added version for dev requirements
+
+0.3.4 (2020-07-12)
+------------------
+* Added python version >= 3.6

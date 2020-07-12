@@ -5,7 +5,7 @@ History
 0.1.0 (2020-06-16)
 ------------------
 
-* Project start.
+* Project start
 
 0.2.1 (2020-06-20)
 ------------------
@@ -16,3 +16,9 @@ History
 ------------------
 
 * Automatic integration with pypi
+
+0.3.1 (2020-07-12)
+------------------
+
+* Add plt.gca to add_correlation and label_points
+* Update docs to include notebook references

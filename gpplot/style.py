@@ -2,6 +2,7 @@
 
 import seaborn as sns
 import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 
 def discrete_palette(palette='Set2', n=8):
@@ -49,7 +50,7 @@ def set_aesthetics(style='ticks', context='notebook', font='Arial',
             mpl.rcParams[key] = value
 
 
-def savefig(fig, path, bbox_inches='tight', transparent=True, **kwargs):
+def savefig(path, fig=None, bbox_inches='tight', transparent=True, **kwargs):
     """Wrapper function to save figures
 
     Parameters
@@ -65,4 +66,6 @@ def savefig(fig, path, bbox_inches='tight', transparent=True, **kwargs):
     **kwargs
         Other keyword arguments are passed through to matplotlib.pyplot.savefig
     """
+    if fig is None:
+        fig = plt.gcf()
     fig.savefig(path, bbox_inches=bbox_inches, transparent=transparent, **kwargs)

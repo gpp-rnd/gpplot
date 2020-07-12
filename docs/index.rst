@@ -7,7 +7,10 @@ Welcome to gpplot's documentation!
 
    readme
    installation
-   usage
+   tutorial
+   style
+   ridgeplot
+   density_rugplot
    modules
    contributing
    authors

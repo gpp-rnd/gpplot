@@ -31,16 +31,16 @@ def test_point_density_plot(scatter_data):
 
 
 def test_correlation(scatter_data):
-    pearson = gpplot.calculate_correlation(scatter_data, 'x', 'y', 'pearson')
+    pearson = gpplot.plots.calculate_correlation(scatter_data, 'x', 'y', 'pearson')
     assert pearson[1] < 0.01
-    spearman = gpplot.calculate_correlation(scatter_data, 'x', 'y', 'spearman')
+    spearman = gpplot.plots.calculate_correlation(scatter_data, 'x', 'y', 'spearman')
     assert spearman[1] < 0.01
     assert pearson[0] != spearman[0]
 
 
 def test_add_correlation(scatter_data):
     ax = gpplot.point_densityplot(scatter_data, 'x', 'y')
-    ax = gpplot.add_correlation(ax, scatter_data, 'x', 'y', size=12, color='blue')
+    ax = gpplot.add_correlation(scatter_data, 'x', 'y', size=12, color='blue')
 
 
 def test_barplot():
@@ -60,7 +60,7 @@ def test_label_points():
     mpg = sns.load_dataset('mpg')
     ax = sns.scatterplot(data=mpg, x='weight', y='mpg')
     label = ['hi 1200d', 'ford f250', 'chevy c20', 'oldsmobile omega']
-    gpplot.label_points(ax, mpg, 'weight', 'mpg', label, 'name')
+    gpplot.label_points(mpg, 'weight', 'mpg', label, 'name')
 
 
 def test_dark_boxplot():

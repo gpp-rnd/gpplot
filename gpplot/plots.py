@@ -165,14 +165,12 @@ def calculate_correlation(data, x, y, type):
     return cor
 
 
-def add_correlation(ax, data, x, y, method='pearson', signif=2, loc='upper left',
-                    fontfamily='Arial', **kwargs):
+def add_correlation(data, x, y, method='pearson', signif=2, loc='upper left',
+                    fontfamily='Arial', ax=None, **kwargs):
     """Add correlation to a scatterplot
 
     Parameters
     ----------
-    ax: Axis object
-        Plot to add correlation to
     data: DataFrame
         DataFrame with columns x and y, same data used to create the plot
     x: str
@@ -189,6 +187,8 @@ def add_correlation(ax, data, x, y, method='pearson', signif=2, loc='upper left'
         text size
     fontfamily: str, optional
         text font family
+    ax: Axis object, optional
+        Plot to add correlation to
     **kwargs
         Other key word arguments passed to text object
 
@@ -201,6 +201,8 @@ def add_correlation(ax, data, x, y, method='pearson', signif=2, loc='upper left'
     text = AnchoredText(label, loc=loc, frameon=False,
                         prop=dict(fontfamily=fontfamily,
                                   **kwargs))
+    if ax is None:
+        ax = plt.gca()
     ax.add_artist(text)
     return ax
 
@@ -319,14 +321,12 @@ def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
     return fig, ax
 
 
-def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='black',
-                 arrow_lw=1, **kwargs):
+def label_points(data, x, y, label, label_col, arrowstyle='-', arrow_color='black',
+                 arrow_lw=1, ax=None, **kwargs):
     """Label points in a scatterplot
 
     Parameters
     ----------
-    ax: matplotlib.axes.Axes
-        Plot to label
     data: DataFrame
         Data to create labels
     x: str
@@ -343,6 +343,8 @@ def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='
         Color of arrow
     arrow_lw: float, optional
         Line weight of arrow
+    ax: matplotlib.axes.Axes
+        Plot to label
     **kwargs
         Other keyword arguments are passed through to matplotlib.plt.text
 
@@ -351,6 +353,8 @@ def label_points(ax, data, x, y, label, label_col, arrowstyle='-', arrow_color='
     matplotlib.axes.Axes
     """
     labelled_data = data[data[label_col].isin(label)]
+    if ax is None:
+        ax = plt.gca()
     texts = []
     for i, row in labelled_data.iterrows():
         texts.append(ax.text(row[x], row[y], row[label_col], **kwargs))

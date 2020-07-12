@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['seaborn', 'scipy', 'numpy', 'matplotlib', 'pandas', 'adjustText']
+requirements = ['seaborn>=0.10', 'scipy>=1.5', 'numpy>=1.19', 'matplotlib>=3.2', 'pandas>=1.0', 'adjustText>=0.7']
 
 setup_requirements = ['pytest-runner', ]
 
@@ -19,14 +19,13 @@ test_requirements = ['pytest>=3', ]
 setup(
     author="Peter C DeWeirdt",
     author_email='petedeweirdt@gmail.com',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
@@ -43,6 +42,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/gpp-rnd/gpplot',
-    version='0.3.0',
+    version='0.3.4',
     zip_safe=False,
 )

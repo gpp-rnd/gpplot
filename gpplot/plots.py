@@ -81,7 +81,7 @@ def ridgeplot(data, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypo
     return g
 
 
-def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor='',
+def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor=None,
                       marker='o', rasterized=True,
                       palette='viridis', legend=False, **kwargs):
     """Scatter plot with points colored by density

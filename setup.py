@@ -10,7 +10,7 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['seaborn>=0.10', 'scipy>=1.5', 'numpy>=1.19', 'matplotlib>=3.2', 'pandas>=1.0', 'adjustText>=0.7']
+requirements = ['seaborn>=0.10', 'scipy>=1.5', 'numpy>=1.19', 'matplotlib==3.2', 'pandas>=1.0', 'adjustText>=0.7']
 
 setup_requirements = ['pytest-runner', ]
 

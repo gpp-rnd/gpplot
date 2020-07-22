@@ -34,3 +34,7 @@ History
 0.3.4 (2020-07-12)
 ------------------
 * Added python version >= 3.6
+
+0.3.5 (2020-07-22)
+------------------
+* Updated for Matplotlib >= 3.3

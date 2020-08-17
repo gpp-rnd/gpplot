@@ -6,3 +6,11 @@ from .style import discrete_palette, diverging_cmap, sequential_cmap, set_aesthe
 __author__ = """Peter C DeWeirdt"""
 __email__ = 'petedeweirdt@gmail.com'
 __version__ = '0.3.5'
+
+
+def add_reg_line(scatter_data, param, param1):
+    return None
+
+
+def add_xy_line(scatter_data, param, param1):
+    return None

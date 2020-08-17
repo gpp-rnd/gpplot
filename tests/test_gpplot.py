@@ -4,7 +4,6 @@
 
 import pytest
 
-
 import gpplot
 import seaborn as sns
 import pandas as pd
@@ -45,13 +44,11 @@ def test_add_correlation(scatter_data):
 
 def test_barplot():
     mpg = sns.load_dataset('mpg')
-    mpg_summary = (mpg.groupby(['model_year', 'origin'])
-                   .agg({'mpg': 'mean'})
-                   .reset_index())
+    mpg_summary = (mpg.groupby(['model_year', 'origin']).agg({'mpg': 'mean'}).reset_index())
     ax = gpplot.pandas_barplot(mpg_summary, 'model_year', 'origin', 'mpg')
 
 
-def test_desnity_rugplot():
+def test_density_rugplot():
     data = sns.load_dataset('iris')
     fig, ax = gpplot.density_rugplot(data, 'petal_length', 'species', ['setosa', 'virginica'])
 
@@ -66,3 +63,12 @@ def test_label_points():
 def test_dark_boxplot():
     tips = sns.load_dataset("tips")
     ax = gpplot.dark_boxplot(data=tips, x="size", y="total_bill")
+
+
+def test_add_regline(scatter_data):
+    ax = gpplot.point_densityplot(scatter_data, 'x', 'y')
+    ax = gpplot.add_reg_line(scatter_data, 'x', 'y')
+
+def test_add_xyline(scatter_data):
+    ax = gpplot.point_densityplot(scatter_data, 'x', 'y')
+    ax = gpplot.add_xy_line(scatter_data, 'x', 'y')

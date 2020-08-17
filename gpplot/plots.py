@@ -14,12 +14,11 @@ def label_axes(x, color, label, text_xpos, text_ypos, text_ha, text_va):
     """For use with ridgeplot, define and use a simple function
     to label the kde plots in axes coordinates"""
     ax = plt.gca()
-    ax.text(text_xpos, text_ypos, label, color=color,
-            ha=text_ha, va=text_va, transform=ax.transAxes)
+    ax.text(text_xpos, text_ypos, label, color=color, ha=text_ha, va=text_va, transform=ax.transAxes)
 
 
-def ridgeplot(data, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=0.2, text_ha='left',
-              text_va='center', lw=0.5, **kwargs):
+def ridgeplot(data, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypos=0.2, text_ha='left', text_va='center',
+              lw=0.5, **kwargs):
     """
     Creates a ridgeplot of overlapping kde plots
 
@@ -81,9 +80,8 @@ def ridgeplot(data, x, hue, aspect=5, height=1, alpha=0.7, text_xpos=0, text_ypo
     return g
 
 
-def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor=None,
-                      marker='o', rasterized=True,
-                      palette='viridis', legend=False, **kwargs):
+def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor=None, marker='o', rasterized=True, palette='viridis',
+                      legend=False, **kwargs):
     """Scatter plot with points colored by density
 
     Rasterized for easy illustrator import
@@ -124,17 +122,14 @@ def point_densityplot(data, x, y, bins=None, alpha=0.6, edgecolor=None,
     if bins is None:
         bins = [20, 20]
     hist_data, x_e, y_e = np.histogram2d(x_val, y_val, bins=bins, density=True)
-    z = interpn((0.5 * (x_e[1:] + x_e[:-1]), 0.5 * (y_e[1:] + y_e[:-1])),
-                hist_data, np.vstack([x_val, y_val]).T,
+    z = interpn((0.5 * (x_e[1:] + x_e[:-1]), 0.5 * (y_e[1:] + y_e[:-1])), hist_data, np.vstack([x_val, y_val]).T,
                 method="splinef2d", bounds_error=False)
     # Be sure to plot all data
     z[np.where(np.isnan(z))] = 0.0
     df['color'] = z
     df = df.sort_values('color', ascending=True)
-    ax = sns.scatterplot(x=x, y=y, data=df, hue='color',
-                         alpha=alpha, edgecolor=edgecolor,
-                         marker=marker, rasterized=rasterized,
-                         palette=palette, legend=legend, **kwargs)
+    ax = sns.scatterplot(x=x, y=y, data=df, hue='color', alpha=alpha, edgecolor=edgecolor, marker=marker,
+                         rasterized=rasterized, palette=palette, legend=legend, **kwargs)
     return ax
 
 
@@ -165,8 +160,7 @@ def calculate_correlation(data, x, y, type):
     return cor
 
 
-def add_correlation(data, x, y, method='pearson', signif=2, loc='upper left',
-                    fontfamily='Arial', ax=None, **kwargs):
+def add_correlation(data, x, y, method='pearson', signif=2, loc='upper left', fontfamily='Arial', ax=None, **kwargs):
     """Add correlation to a scatterplot
 
     Parameters
@@ -198,17 +192,14 @@ def add_correlation(data, x, y, method='pearson', signif=2, loc='upper left',
     """
     r = calculate_correlation(data, x, y, method)
     label = 'r = ' + str(round(r[0], signif))
-    text = AnchoredText(label, loc=loc, frameon=False,
-                        prop=dict(fontfamily=fontfamily,
-                                  **kwargs))
+    text = AnchoredText(label, loc=loc, frameon=False, prop=dict(fontfamily=fontfamily, **kwargs))
     if ax is None:
         ax = plt.gca()
     ax.add_artist(text)
     return ax
 
 
-def pandas_barplot(data, x, hue, y, x_order=None, hue_order=None,
-                   horizontal=True, stacked=True, **kwargs):
+def pandas_barplot(data, x, hue, y, x_order=None, hue_order=None, horizontal=True, stacked=True, **kwargs):
     """Create a barplot using pandas plot functionality
 
     Mainly allows for stacked barplots
@@ -250,10 +241,9 @@ def pandas_barplot(data, x, hue, y, x_order=None, hue_order=None,
     return ax
 
 
-def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
-                    density_color='black', rug_color='black', rug_alpha=0.5,
-                    figsize=plt.rcParams['figure.figsize'], ref_line=None,
-                    ref_line_color='black', **kwargs):
+def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1, density_color='black', rug_color='black',
+                    rug_alpha=0.5, figsize=plt.rcParams['figure.figsize'], ref_line=None, ref_line_color='black',
+                    **kwargs):
     """Creates a density rugplot
 
     first subplot is a distribution of values and subsequent subplots are
@@ -296,8 +286,7 @@ def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
         individual subplots
     """
     height_ratios = [density_height] + ([rug_height] * len(y_values))
-    fig, ax = plt.subplots((len(y_values) + 1), 1,
-                           gridspec_kw={'height_ratios': height_ratios}, sharex=True,
+    fig, ax = plt.subplots((len(y_values) + 1), 1, gridspec_kw={'height_ratios': height_ratios}, sharex=True,
                            figsize=figsize)
     # KDE plot of all x
     sns.kdeplot(data=data[x], color=density_color, legend=False, ax=ax[0])
@@ -310,8 +299,7 @@ def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
         ax[0].axvline(x=ref_line, color=ref_line_color, linestyle='--')
     # Rugplots for each y value
     for i, value in enumerate(y_values):
-        sns.rugplot(a=data.loc[data[y] == value, x], height=1, ax=ax[i + 1],
-                    color=rug_color, alpha=rug_alpha, **kwargs)
+        sns.rugplot(a=data.loc[data[y] == value, x], height=1, ax=ax[i + 1], color=rug_color, alpha=rug_alpha, **kwargs)
         ax[i + 1].set_ylabel(value, rotation='horizontal', ha='right', va='center')
         ax[i + 1].set_yticks([])
         ax[i + 1].get_xaxis().set_major_locator(ticker.AutoLocator())
@@ -321,8 +309,7 @@ def density_rugplot(data, x, y, y_values, density_height=2, rug_height=1,
     return fig, ax
 
 
-def label_points(data, x, y, label, label_col, arrowstyle='-', arrow_color='black',
-                 arrow_lw=1, ax=None, **kwargs):
+def label_points(data, x, y, label, label_col, arrowstyle='-', arrow_color='black', arrow_lw=1, ax=None, **kwargs):
     """Label points in a scatterplot
 
     Parameters
@@ -359,13 +346,12 @@ def label_points(data, x, y, label, label_col, arrowstyle='-', arrow_color='blac
     for i, row in labelled_data.iterrows():
         texts.append(ax.text(row[x], row[y], row[label_col], **kwargs))
     # ensures text labels are non-overlapping
-    adjust_text(texts, arrowprops=dict(arrowstyle=arrowstyle, color=arrow_color,
-                                       lw=arrow_lw))
+    adjust_text(texts, arrowprops=dict(arrowstyle=arrowstyle, color=arrow_color, lw=arrow_lw))
     return ax
 
 
-def dark_boxplot(data, x, y, boxprops=None, medianprops=None,
-                 whiskerprops=None, capprops=None, flierprops=None, **kwargs):
+def dark_boxplot(data, x, y, boxprops=None, medianprops=None, whiskerprops=None, capprops=None, flierprops=None,
+                 **kwargs):
     """Wrapper for seaborn.boxplot, which defaults to black lines for boxplot elements
 
     Parameters
@@ -403,8 +389,65 @@ def dark_boxplot(data, x, y, boxprops=None, medianprops=None,
         capprops = {'color': 'black'}
     if flierprops is None:
         flierprops = {'marker': 'o', 'markerfacecolor': 'black'}
-    ax = sns.boxplot(data=data, x=x, y=y,
-                     boxprops=boxprops, medianprops=medianprops,
-                     whiskerprops=whiskerprops, capprops=capprops,
-                     flierprops=flierprops, **kwargs)
+    ax = sns.boxplot(data=data, x=x, y=y, boxprops=boxprops, medianprops=medianprops, whiskerprops=whiskerprops,
+                     capprops=capprops, flierprops=flierprops, **kwargs)
+    return ax
+
+
+def add_reg_line(data, x, y, ax=None, linestyle='dashed', linecolor='black', **kwargs):
+    """Add regression line to a scatter plot using seaborn.regplot
+
+    Parameters
+    ----------
+    data: DataFrame
+        DataFrame with columns x and y, same data used to create the scatter plot
+    x: str
+        x variable to regress
+    y: str
+        y variable to regress
+    ax: Axis object, optional
+        Plot to add regression line to
+    linestyle: str, optional
+        Style of regression line
+    linecolor: str, optional
+        Color of regression line
+    **kwargs
+        Other keyword arguments that are passed through to seaborn.regplot
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    ax = sns.regplot(data=data, x=x, y=y, scatter=False, ax=ax,
+                     line_kws={'linestyle': linestyle, 'color': linecolor}, **kwargs)
+    if ax is None:
+        ax = plt.gca()
+    return ax
+
+
+def add_xy_line(slope=1, intercept=0, ax=None, linestyle='dashed', linecolor='black'):
+    """Add line with specified slope and intercept to a scatter plot; Default: y=x line
+
+    Parameters
+    ----------
+    slope: float
+        Value of slope of line to be drawn
+    intercept: float
+        Value of intercept of line to be drawn
+    ax: Axis object, optional
+        Plot to add line to
+    linestyle: str, optional
+        Style of line
+    linecolor: str, optional
+        Color of line
+
+    Returns
+    -------
+    matplotlib.axes.Axes
+    """
+    if ax is None:
+        ax = plt.gca()
+    x = np.array(ax.get_xlim())
+    y = intercept + slope * x
+    ax = plt.plot(x, y, linestyle=linestyle, color=linecolor)
     return ax

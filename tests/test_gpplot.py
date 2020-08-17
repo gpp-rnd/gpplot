@@ -69,6 +69,7 @@ def test_add_regline(scatter_data):
     ax = gpplot.point_densityplot(scatter_data, 'x', 'y')
     ax = gpplot.add_reg_line(scatter_data, 'x', 'y')
 
+
 def test_add_xyline(scatter_data):
     ax = gpplot.point_densityplot(scatter_data, 'x', 'y')
-    ax = gpplot.add_xy_line(scatter_data, 'x', 'y')
+    ax = gpplot.add_xy_line()

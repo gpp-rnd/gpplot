@@ -418,10 +418,10 @@ def add_reg_line(data, x, y, ax=None, linestyle='dashed', linecolor='black', **k
     -------
     matplotlib.axes.Axes
     """
-    ax = sns.regplot(data=data, x=x, y=y, scatter=False, ax=ax,
-                     line_kws={'linestyle': linestyle, 'color': linecolor}, **kwargs)
     if ax is None:
         ax = plt.gca()
+    ax = sns.regplot(data=data, x=x, y=y, scatter=False, ax=ax,
+                     line_kws={'linestyle': linestyle, 'color': linecolor}, **kwargs)
     return ax
 
 

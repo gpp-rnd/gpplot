@@ -38,3 +38,7 @@ History
 0.3.5 (2020-07-22)
 ------------------
 * Updated for Matplotlib >= 3.3
+
+0.4.0 (2020-08-18)
+------------------
+* Added add_reg_line and add_xy_line
